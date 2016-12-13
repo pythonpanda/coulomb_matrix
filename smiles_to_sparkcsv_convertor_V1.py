@@ -11,15 +11,12 @@ from numpy import *
 from numba import jit
 from sklearn import svm
 
-
 """
 kernprof -l script.py
 python -m line_profiler script.py.lprof
 Uncomment @profile after identifying the bottleneck!
 """
-
 '@profile' 
-
 
 """"
 
@@ -42,7 +39,6 @@ def extract_csv(file):
     #csv_to_list
     opened_file.close()
     return csv_to_list
-
 
 def largest_molecule_size(training_input) :
     '''
@@ -95,10 +91,10 @@ def coulombmat(file,dim):
     for i in range(xyzheader):
         for j in range(xyzheader):
             if i == j:
-                cij[i,j]=0.5*chargearray[i]**2.4   #Potential energy of isolated atom
+                cij[i,j]=0.5*chargearray[i]**2.4   # Diagonal term described by Potential energy of isolated atom
             else:
                 dist= linalg.norm(xyzmatrix[i,:] - xyzmatrix[j,:])              
-                cij[i,j]=chargearray[i]*chargearray[j]/dist   #Pair-wise repulsion
+                cij[i,j]=chargearray[i]*chargearray[j]/dist   #Pair-wise repulsion 
     return  cij
  
 def matsort(xyzfile,dim):
