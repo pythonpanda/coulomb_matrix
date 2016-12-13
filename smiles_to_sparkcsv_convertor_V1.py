@@ -103,7 +103,7 @@ def coulombmat(file,dim):
  
 def matsort(xyzfile,dim):
     """
-    Takes in a Coloumb matrix of (mxn) dimension and peforms a rowwise sorting such that ||C(j,:)|| > ||C(j+1,:)||, J= 1,.......,(m-1)
+    Takes in a Coloumb matrix of (mxn) dimension and peforms a rowwise sorting such that ||C(j,:)|| > ||C(j+1,:)||, J= 0,1,.......,(m-1)
     Finally returns a vecotrized (m*n,1) column matrix .
     """   
     unsorted_mat = coulombmat(xyzfile,dim)
