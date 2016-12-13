@@ -95,15 +95,15 @@ def coulombmat(file,dim):
     for i in range(xyzheader):
         for j in range(xyzheader):
             if i == j:
-                cij[i,j]=0.5*chargearray[i]**2.4
+                cij[i,j]=0.5*chargearray[i]**2.4   #Potential energy of isolated atom
             else:
                 dist= linalg.norm(xyzmatrix[i,:] - xyzmatrix[j,:])              
-                cij[i,j]=chargearray[i]*chargearray[j]/dist   
+                cij[i,j]=chargearray[i]*chargearray[j]/dist   #Pair-wise repulsion
     return  cij
  
 def matsort(xyzfile,dim):
     """
-    Takes in a Coloumb matrix of (mxmn) dimension and peforms a rowwise sorting such that |C(j,:)| > |C(j+1,:)|, J= 1,.......,(m-1)
+    Takes in a Coloumb matrix of (mxn) dimension and peforms a rowwise sorting such that ||C(j,:)|| > ||C(j+1,:)||, J= 1,.......,(m-1)
     Finally returns a vecotrized (m*n,1) column matrix .
     """   
     unsorted_mat = coulombmat(xyzfile,dim)
